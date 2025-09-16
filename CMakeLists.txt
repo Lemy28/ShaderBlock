@@ -9,7 +9,13 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project ("ShaderBlock")
+project(ShaderBlock LANGUAGES CXX C)
+
+# 告诉CMake去集中的include文件夹里查找头文件
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/vendor/include)
+
+# 告诉CMake去集中的lib文件夹里查找.lib文件
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/vendor/lib) # <--- 注意路径变化
 
 # 包含子项目。
 add_subdirectory ("ShaderBlock")

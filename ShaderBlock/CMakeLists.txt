@@ -5,6 +5,9 @@
 # 将源代码添加到此项目的可执行文件。
 add_executable (ShaderBlock "ShaderBlock.cpp" "ShaderBlock.h")
 
+# 这个命令告诉ShaderBlock目标需要链接哪些库
+target_link_libraries(ShaderBlock PRIVATE glfw3.lib opengl32.lib)
+
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET ShaderBlock PROPERTY CXX_STANDARD 20)
 endif()
